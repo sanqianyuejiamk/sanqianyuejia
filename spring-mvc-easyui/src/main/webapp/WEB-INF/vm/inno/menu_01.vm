@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <title>aa</title>
+    #parse("resources.vm")
+</head>
+<body>
+
+    #parse("navbar.vm")
+
+    <table id="dg" class="easyui-datagrid"
+           toolbar="#toolbar">
+    </table>
+    <div id="toolbar">
+        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser(0)">New User</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="newUser(80)">Edit User</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="newUser(170)">Remove User</a>
+    </div>
+
+    <!-- 菜单 -->
+    <div id="mm" class="easyui-menu" style="width:120px;">
+        <div onclick="javascript:alert('new')">New</div>
+        <div>
+            <span>Open</span>
+            <div style="width:150px;">
+                <div><b>Word</b></div>
+                <div>Excel</div>
+                <div>PowerPoint</div>
+            </div>
+        </div>
+        <div icon="icon-save">Save</div>
+        <div class="menu-sep"></div>
+        <div>Exit</div>
+    </div>
+
+    <script>
+        function newUser(len) {
+            $('#mm').menu('show', {
+                left: 5+len,
+                top: 100
+            });
+        }
+    </script>
+</body>
+</html>
