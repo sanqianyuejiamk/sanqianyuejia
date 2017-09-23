@@ -48,6 +48,18 @@
             </div>
         </div>
         <div id="content" region="center" title="Language" style="padding:5px;">
+            <!-- 标签页 -->
+            <div class="easyui-tabs" style="width:900px;height:600px;">
+                <div title="First Tab" iconCls="icon-redo" style="padding:10px;">
+                    First Tab
+                </div>
+                <div title="Second Tab" iconCls="icon-tip" closable="true" style="padding:10px;">
+                    Second Tab
+                </div>
+                <div title="Third Tab" iconCls="icon-reload" closable="true" style="padding:10px;">
+                    Third Tab
+                </div>
+            </div>
         </div>
     </div>
 
