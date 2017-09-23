@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <title>baicai</title>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/a/bootstrap.min_a.js"></script>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/css/theme.css" rel="stylesheet">
+</head>
+<body>
+
+#parse("navbar.vm")
+
+<ul class="nav nav-tabs" id="otherInfoTab">
+    <li class="active"><a href="#time_line">消费者</a></li>
+    <li><a href="#complain">生产者</a></li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="time_line">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-sm-3 control-label"><h2>申请mq主题topic</h2></label>
+            </div>
+            <div class="form-group">
+                <label for="c_name" class="col-sm-2 control-label">名称</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="c_name" id="c_name" value=""
+                           placeholder="请输入消费者名称">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="c_groupId" class="col-sm-2 control-label">groupId</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="c_groupId" id="c_groupId" value=""
+                           placeholder="请输入组名">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="c_topic" class="col-sm-2 control-label">主题</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="c_topic" id="c_topic" value=""
+                           placeholder="请输入主题topic">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="c_userName" class="col-sm-2 control-label">申请人</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="c_userName" id="c_userName" value=""
+                           placeholder="请输入申请人名字">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="ctype" class="col-sm-2 control-label">消费类型</label>
+                <div class="col-sm-9">
+                    <input type="radio" name="ctype" id="ctypePush" value="push" checked> push方式
+                    <input type="radio" name="ctype" id="ctypePull" value="pull"> pull方式
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="c_btn" class="col-sm-2 control-label"></label>
+                <div class="col-sm-9">
+                    <button class="btn btn-sm btn-danger" id="c_btn" name="c_btn" type="button">提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="tab-pane" id="complain">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label class="col-sm-3 control-label"><h2>申请mq主题topic</h2></label>
+            </div>
+            <div class="form-group">
+                <label for="p_name" class="col-sm-2 control-label">名称</label>
+
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="p_name" id="p_name" value=""
+                           placeholder="请输入生产者名称">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="p_groupId" class="col-sm-2 control-label">groupId</label>
+
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="p_groupId" id="p_groupId" value=""
+                           placeholder="请输入组名">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="p_topic" class="col-sm-2 control-label">主题</label>
+
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="p_topic" id="p_topic" value=""
+                           placeholder="请输入主题topic">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="p_userName" class="col-sm-2 control-label">申请人</label>
+
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="p_userName" id="p_userName" value=""
+                           placeholder="请输入申请人名字">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="p_btn" class="col-sm-2 control-label"></label>
+                <div class="col-sm-9">
+                    <button class="btn btn-sm btn-danger" id="p_btn" name="p_btn" type="button">提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('#otherInfoTab a:first').tab('show');//初始化显示哪个tab
+
+        $('#otherInfoTab a').click(function (e) {
+            e.preventDefault();//阻止a链接的跳转行为
+            $(this).tab('show');//显示当前选中的链接及关联的content
+        })
+    })
+
+    $(document).ready(function () {
+        $("#c_btn").click(function () {
+            var formData = {
+                "type":1,
+                "name": $('#c_name').val(),
+                "groupId": $('#c_groupId').val(),
+                "ctype":$("input[name$='ctype']").val(),
+                "topic":$('#c_topic').val(),
+                "userName":$('#c_userName').val()
+            }
+            $.ajax({
+                cache: true,
+                type: "POST",
+                url:"/mk/saveTopic.do",
+                data:formData,
+                async: false,
+                error: function (request) {
+                    alert("Connection error");
+                },
+                success: function (data) {
+                    console.log("--------------- , data = " + data);
+                    var result = JSON.parse(data);
+                    if (result.status == 1) {
+                        alert(result.message);
+                        window.location.href = "topic.do";
+                    }
+                }
+            });
+        });
+    });
+</script>
+
+#parse("foot.vm")
+</body>
+</html>

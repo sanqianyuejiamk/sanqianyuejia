@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<context:component-scan base-package="com.mengka.*" />
+	<context:component-scan base-package="com.mengka.usercenter.*" />
+	<mvc:annotation-driven />
+
+	<!--<context:property-placeholder location="classpath:config.properties" />-->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:/hessian-config.properties</value>
+				<value>classpath:/config.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!--<import resource="hessian-productor-bean.xml"/>-->
+
+	<!-- 拦截器 -->
+	<!--<mvc:interceptors>-->
+		<!--<bean class="com.mengka.interceptor.AllInterceptor" />-->
+	<!--</mvc:interceptors>-->
+
+	<!--<mvc:interceptors>-->
+		<!--<mvc:interceptor>-->
+			<!--<mvc:mapping path="/**" />-->
+			<!--&lt;!&ndash;<mvc:exclude-mapping path="/user/login" />&ndash;&gt;-->
+			<!--&lt;!&ndash;<bean class="com.mengka.usercenter.interceptor.SSOInterceptor">&ndash;&gt;-->
+				<!--&lt;!&ndash; local test &ndash;&gt;-->
+				<!--&lt;!&ndash;-->
+				<!--<property name="ssoURL">-->
+					<!--<value>http://192.168.1.107:8133/</value>-->
+				<!--</property>-->
+				<!--&ndash;&gt;-->
+				<!--&lt;!&ndash;<property name="systemName">&ndash;&gt;-->
+				<!--&lt;!&ndash;<value>kitas</value>&ndash;&gt;-->
+				<!--&lt;!&ndash;</property>&ndash;&gt;-->
+				<!--&lt;!&ndash;<property name="storeUserInSession">&ndash;&gt;-->
+				<!--&lt;!&ndash;<value>true</value>&ndash;&gt;-->
+				<!--&lt;!&ndash;</property>&ndash;&gt;-->
+			<!--&lt;!&ndash;</bean>&ndash;&gt;-->
+		<!--</mvc:interceptor>-->
+	<!--</mvc:interceptors>-->
+
+</beans>

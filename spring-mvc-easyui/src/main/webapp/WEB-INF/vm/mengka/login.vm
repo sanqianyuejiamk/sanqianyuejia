@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <title>baicai</title>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/a/bootstrap.min_a.js"></script>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/css/theme.css" rel="stylesheet">
+</head>
+<body>
+
+#parse("navbar2.vm")
+
+    <div class="tab-pane active" id="time_line">
+        <form class="form-horizontal" role="form" action="/user/loginSystem.do" type="POST">
+            <div class="form-group">
+                <label class="col-sm-3 control-label"><h2>登录</h2></label>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">用户名</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" name="name" id="name" value=""
+                           placeholder="请输入用户名">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">groupId</label>
+                <div class="col-sm-9">
+                    <input type="password" class="form-control" name="password" id="password" value=""
+                           placeholder="请输入密码">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="c_btn" class="col-sm-2 control-label"></label>
+                <div class="col-sm-9">
+                    <button class="btn btn-sm btn-danger" id="c_btn" name="c_btn" type="submit">提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+<script>
+    $(document).ready(function () {
+
+    });
+</script>
+
+#parse("foot.vm")
+</body>
+</html>
