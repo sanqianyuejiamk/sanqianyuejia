@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <title>aa</title>
+    #parse("resources.vm")
+</head>
+<body>
+    #parse("navbar.vm")
+
+    <!--
+      region边框布局：east、west、north、south、center
+    -->
+    <div class="easyui-layout" style="width:1200px;height:600px;">
+        <!-- 边框布局 -->
+        <div region="west" split="true" title="Navigator" style="width:300px;">
+            <!-- 折叠面板 -->
+            <div class="easyui-accordion" style="width:300px;height:600px;">
+
+                <div title="About Accordion" iconCls="icon-ok" style="overflow:auto;padding:10px;">
+                    <h3 style="color:#0099FF;">Accordion for jQuery</h3>
+                    <p>Accordion is a part of easyui framework for jQuery. It lets you define your accordion component on web page more easily.</p>
+                </div>
+
+                <div title="About easyui" iconCls="icon-reload" style="padding:10px;">
+                    easyui help you build your web page easily
+                </div>
+
+                <div title="Tree Menu" iconCls="icon-print" selected="true">
+                    <ul id="tt1" class="easyui-tree">
+                        <li>
+                            <span>Folder1</span>
+                            <ul>
+                                <li>
+                                    <span>Sub Folder 1</span>
+                                    <ul>
+                                        <li><span>File 11</span></li>
+                                        <li><span>File 12</span></li>
+                                        <li><span>File 13</span></li>
+                                    </ul>
+                                </li>
+                                <li><span>File 2</span></li>
+                                <li><span>File 3</span></li>
+                            </ul>
+                        </li>
+                        <li><span>File2</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="content" region="center" title="Language" style="padding:5px;">
+        </div>
+    </div>
+
+
+    <script>
+        function showcontent(language){
+            $('#content').html('Introduction to ' + language + ' language');
+        }
+    </script>
+
+    #parse("foot.vm")
+</body>
+</html>

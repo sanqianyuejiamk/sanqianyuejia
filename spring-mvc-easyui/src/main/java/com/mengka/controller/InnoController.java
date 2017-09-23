@@ -32,4 +32,10 @@ public class InnoController {
                         @RequestParam(required = false) String groupName) {
         return "inno/bb";
     }
+
+    @RequestMapping(value = "/cc.do", method = {RequestMethod.GET, RequestMethod.POST})
+    public String cc(ModelMap map, HttpServletRequest request,
+                     @RequestParam(required = false) String groupName) {
+        return "inno/cc";
+    }
 }
