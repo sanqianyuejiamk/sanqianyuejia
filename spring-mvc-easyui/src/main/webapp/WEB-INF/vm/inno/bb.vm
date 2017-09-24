@@ -17,17 +17,32 @@
                 <li><a href="javascript:void(0)" onclick="showcontent('java')">Java</a></li>
                 <li><a href="javascript:void(0)" onclick="showcontent('cshape')">C#</a></li>
                 <li><a href="javascript:void(0)" onclick="showcontent('vb')">VB</a></li>
-                <li><a href="javascript:void(0)" onclick="showcontent('erlang')">Erlang</a></li>
+                <li><a href="javascript:void(0)" onclick="showWindow('erlang')">Erlang</a></li>
             </ul>
         </div>
         <div id="content" region="center" title="Language" style="padding:5px;">
         </div>
     </div>
 
+    <!-- 窗口 -->
+    <div id="win" class="easyui-window" title="Login" closed="true" style="width:300px;height:180px;">
+        <form style="padding:10px 20px 10px 40px;">
+            <p>Name: <input type="text"></p>
+            <p>Pass: <input type="password"></p>
+            <div style="padding:5px;text-align:center;">
+                <a href="#" class="easyui-linkbutton" icon="icon-ok">Ok</a>
+                <a href="#" class="easyui-linkbutton" icon="icon-cancel" onclick="javascript:$('#win').window('close')">Cancel</a>
+            </div>
+        </form>
+    </div>
 
     <script>
         function showcontent(language){
             $('#content').html('Introduction to ' + language + ' language');
+        }
+        
+        function showWindow() {
+            $('#win').window('open');
         }
     </script>
 
