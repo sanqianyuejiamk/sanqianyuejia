@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mengka.springboot</groupId>
-    <artifactId>spring-boot</artifactId>
+    <artifactId>innotek-tutorial</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>spring-boot</name>
+    <name>innotek-tutorial</name>
     <url>http://maven.apache.org</url>
     <properties>
         <dubbo.version>2.5.3</dubbo.version>
@@ -26,6 +26,7 @@
         <commons.dbcp.version>1.4</commons.dbcp.version>
         <jdbcdslog.version>1.0.6.2</jdbcdslog.version>
         <cglib.version>2.2.2</cglib.version>
+        <fastjson.version>1.2.15</fastjson.version>
     </properties>
     <dependencies>
         <dependency>
@@ -102,9 +103,9 @@
             <version>1.4.0.RELEASE</version>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>org.springframework.data</groupId>-->
-            <!--<artifactId>spring-data-redis</artifactId>-->
-            <!--<version>1.7.2.RELEASE</version>-->
+        <!--<groupId>org.springframework.data</groupId>-->
+        <!--<artifactId>spring-data-redis</artifactId>-->
+        <!--<version>1.7.2.RELEASE</version>-->
         <!--</dependency>-->
         <!--test-->
         <dependency>
@@ -194,25 +195,31 @@
             <artifactId>mybatis-generator-core</artifactId>
             <version>${mybatis-generator-core.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>${project.artifactId}-${project.version}</finalName>
         <plugins>
             <!--<plugin>-->
-                <!--<groupId>com.alibaba.citrus.tool</groupId>-->
-                <!--<artifactId>autoconfig-maven-plugin</artifactId>-->
-                <!--<version>1.2</version>-->
-                <!--<configuration>-->
-                    <!--<userProperties>./antx.properties</userProperties>-->
-                <!--</configuration>-->
-                <!--<executions>-->
-                    <!--<execution>-->
-                        <!--<phase>package</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>autoconfig</goal>-->
-                        <!--</goals>-->
-                    <!--</execution>-->
-                <!--</executions>-->
+            <!--<groupId>com.alibaba.citrus.tool</groupId>-->
+            <!--<artifactId>autoconfig-maven-plugin</artifactId>-->
+            <!--<version>1.2</version>-->
+            <!--<configuration>-->
+            <!--<userProperties>./antx.properties</userProperties>-->
+            <!--</configuration>-->
+            <!--<executions>-->
+            <!--<execution>-->
+            <!--<phase>package</phase>-->
+            <!--<goals>-->
+            <!--<goal>autoconfig</goal>-->
+            <!--</goals>-->
+            <!--</execution>-->
+            <!--</executions>-->
             <!--</plugin>-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -2,6 +2,7 @@ package com.mengka.springboot.controller;
 
 import com.mengka.springboot.dao.domain.BookDO;
 import com.mengka.springboot.dao.persistence.BookDOMapper;
+import com.mengka.springboot.manager.SensorManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,20 @@ public class CommonController {
     @Autowired
     private BookDOMapper bookDOMapper;
 
+    @Autowired
+    private SensorManager sensorManager;
+
     @RequestMapping("/rate")
+    public String sensor(Map<String, Object> model, Long id){
+        logger.info("CommonController rate id = {}",id);
+        model.put("list",null);
+
+        sensorManager.initBerthData();
+
+        return "product_rate";
+    }
+
+    @RequestMapping("/rate2")
     public String product(Map<String, Object> model, Long id){
         logger.info("CommonController rate id = {}",id);
         model.put("list",null);
@@ -38,4 +52,5 @@ public class CommonController {
 
         return "product_rate";
     }
+
 }

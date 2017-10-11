@@ -102,4 +102,30 @@ public class TimeUtil {
     public static int getDiscrepantDays(Date dateStart, Date dateEnd) {
         return (int) ((dateEnd.getTime() - dateStart.getTime()) / 1000 / 60 / 60 / 24);
     }
+
+    /**
+     *  协调世界时（英：Coordinated Universal Time)，又称世界统一时间，世界标准时间
+     *
+     * 1.协调世界时是以原子时秒长为基础，在时刻上尽量接近于世界时的一种时间计量系统。
+     * 2.中国大陆、中国香港、中国澳门、中国台湾、蒙古国、新加坡、马来西亚、菲律宾、西澳大利亚州的时间与UTC的时差均为+8，也就是UTC+8。
+     *
+     * @param time
+     * @return
+     */
+    public static long getUTCTime(Date time){
+        Calendar calendar = Calendar.getInstance();
+
+
+        // 取得时间偏移量：
+        int zoneOffset = calendar.get(java.util.Calendar.ZONE_OFFSET);
+        // 取得夏令时差：
+        int dstOffset = calendar.get(java.util.Calendar.DST_OFFSET);
+
+        calendar.setTime(time);
+        // 从本地时间里扣除这些差量，即可以取得UTC时间：
+        calendar.add(java.util.Calendar.MILLISECOND, -(zoneOffset + dstOffset));
+        long mills = calendar.getTimeInMillis();
+
+        return mills;
+    }
 }
