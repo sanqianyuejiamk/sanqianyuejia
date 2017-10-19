@@ -56,4 +56,13 @@ public class ActiveMQController {
         producer.sendNocTopic(message);
         return "product_rate";
     }
+
+    @RequestMapping("/send3")
+    public String send3(Map<String, Object> model) throws Exception{
+        log.info("send NOC message..");
+
+        String message = "Just for test[" + TimeUtil.toDate(new Date(), TimeUtil.FORMAT_YYYY_MM_DD_HH_MM_SS);
+        producer.sendNocByteTopic(message);
+        return "product_rate";
+    }
 }
