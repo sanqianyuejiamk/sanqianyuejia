@@ -29,7 +29,7 @@ public class Consumer {
      *
      * @param text
      */
-    @JmsListener(destination = "noc_msg1", containerFactory = "myFactory")
+    @JmsListener(destination = "noc_msg1",id="cabbage-pro-listener2", containerFactory = "myFactory",subscription="cabbage-pro-listener2")
     public void receiveNocTopic(String text) {
         log.info("receive noc_msg message: " + text);
     }

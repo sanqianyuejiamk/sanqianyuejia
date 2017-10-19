@@ -40,6 +40,8 @@ public class AppConfig {
         configurer.configure(factory, connectionFactory);
         // You could still override some of Boot's default if necessary.
         factory.setPubSubDomain(true);//topic模式
+        factory.setClientId("cabbage-pro-listener2");
+        factory.setSubscriptionDurable(true);//destination-type="durableTopic"，可持久的topic
         return factory;
     }
 
