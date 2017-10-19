@@ -1,5 +1,6 @@
 package com.mengka.springboot.config;
 
+import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.activemq.command.ActiveMQTopic;
 import org.springframework.boot.autoconfigure.jms.DefaultJmsListenerContainerFactoryConfigurer;
@@ -7,6 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
+import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.jms.support.converter.MessageType;
@@ -33,6 +35,27 @@ public class AppConfig {
     }
 
     @Bean
+    public ActiveMQConnectionFactory connectionFactory() {
+        //此链接信息可放入配置文件中
+        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("cabbage", "cabbage@innotek", "tcp://192.168.10.219:61616");
+        connectionFactory.setClientID("cabbage-mk-pro2");
+        return connectionFactory;
+    }
+
+    @Bean
+    public ActiveMQConnectionFactory connectionFactory2() {
+        //此链接信息可放入配置文件中
+        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("cabbage", "cabbage@innotek", "tcp://192.168.10.219:61616");
+        connectionFactory.setClientID("cabbage-mk-pro3");
+        return connectionFactory;
+    }
+
+    @Bean
+    public JmsMessagingTemplate jmsMessagingTemplate(ActiveMQConnectionFactory connectionFactory2) {
+        return new JmsMessagingTemplate(connectionFactory2);
+    }
+
+    @Bean
     public JmsListenerContainerFactory<?> myFactory(ConnectionFactory connectionFactory,
                                                     DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
@@ -47,7 +70,7 @@ public class AppConfig {
 
     @Bean
     public JmsListenerContainerFactory<?> defaultContainerFactory(ConnectionFactory connectionFactory,
-                                                    DefaultJmsListenerContainerFactoryConfigurer configurer) {
+                                                                  DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         // This provides all boot's default to this factory, including the message converter
         configurer.configure(factory, connectionFactory);
