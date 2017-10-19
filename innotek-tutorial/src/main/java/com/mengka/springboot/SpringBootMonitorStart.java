@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.jms.annotation.EnableJms;
 
 /**
  * Created with IntelliJ IDEA
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.PropertySource;
  * Date: 2016/11/26
  * Time: 13:36
  */
+@EnableJms
 @SpringBootApplication
 @EnableAutoConfiguration
 @ComponentScan

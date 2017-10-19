@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
  * Created with IntelliJ IDEA.
  * User: yudongwang
  * Date: 13-8-20
- * Time: ионГ11:06
+ * Time: 11:06
  * To change this template use File | Settings | File Templates.
  */
 public class MD5 {
