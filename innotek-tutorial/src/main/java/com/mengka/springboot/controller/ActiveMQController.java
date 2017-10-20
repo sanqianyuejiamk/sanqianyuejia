@@ -62,7 +62,9 @@ public class ActiveMQController {
         log.info("send NOC message..");
 
         String message = "Just for test[" + TimeUtil.toDate(new Date(), TimeUtil.FORMAT_YYYY_MM_DD_HH_MM_SS);
-        producer.sendNocByteTopic(message);
+
+        String nocMessage = "3001000068000000003900000410aa0021110a13111602100100d8390000041051a0007a1919006400c8012c006407000077";
+        producer.sendNocByteTopic(nocMessage);
         return "product_rate";
     }
 }

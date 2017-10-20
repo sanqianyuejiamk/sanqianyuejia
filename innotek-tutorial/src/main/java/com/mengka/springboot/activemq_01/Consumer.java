@@ -19,7 +19,7 @@ public class Consumer {
      *
      * @param text
      */
-    @JmsListener(destination = "mytest.queue",containerFactory = "defaultContainerFactory")
+    @JmsListener(destination = "mytest.queue",containerFactory = "defaultContainerFactory",concurrency="5-10")
     public void receiveQueue(String text) {
         log.info("receive message: " + text);
     }
@@ -29,8 +29,18 @@ public class Consumer {
      *
      * @param text
      */
-    @JmsListener(destination = "noc_msg1",id="cabbage-pro-listener2", containerFactory = "myFactory",subscription="cabbage-pro-listener2")
+    @JmsListener(destination = "noc_msg1",containerFactory = "myFactory",subscription="cabbage-pro-listener2")
     public void receiveNocTopic(String text) {
         log.info("receive noc_msg message: " + text);
+    }
+
+    /**
+     * 监听topic：noc_msg2
+     *
+     * @param text
+     */
+    @JmsListener(destination = "noc_msg2", containerFactory = "myFactory2",subscription="cabbage-pro-listener3")
+    public void receiveNocBaicaiTopic(byte[] text) {
+        log.info("receive noc_msg2 message: " + new String(text));
     }
 }
