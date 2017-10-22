@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jms.annotation.EnableJms;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 /**
  * Created with IntelliJ IDEA

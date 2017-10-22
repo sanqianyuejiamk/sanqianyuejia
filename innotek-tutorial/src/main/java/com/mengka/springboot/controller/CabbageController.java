@@ -1,15 +1,12 @@
 package com.mengka.springboot.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.mengka.springboot.util.FileUtil;
 import com.mengka.springboot.util.TimeUtil;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.*;
 
 /**
@@ -55,7 +52,7 @@ public class CabbageController {
     }
 
     public List getData(String filePath){
-        Scanner scanner = mkReadFile(filePath);
+        Scanner scanner = FileUtil.mkReadFile(filePath);
 
         List list = new ArrayList();
         while (scanner.hasNext()) {
@@ -83,22 +80,5 @@ public class CabbageController {
         return "result2";
     }
 
-    /**
-     * 按行读取文件内容，返回 Scanner
-     *
-     * @param fileString
-     *            输入文件的存放路径
-     * @return
-     */
-    public static Scanner mkReadFile(String fileString) {
-        File f = new File(fileString);
-        InputStream st = null;
-        try {
-            st = new FileInputStream(f);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        Scanner in = new Scanner(st);
-        return in;
-    }
+
 }
