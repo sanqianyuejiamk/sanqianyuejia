@@ -9,6 +9,19 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Taa {
 
+    /**
+     *  client处理流程:
+     *  1）加载client的keystore文件;
+     *  2）加载client的truststore文件;
+     *  3) 创建KeyManagerFactory对象并初始化;
+     *  4) 创建TrustManagerFactory对象并初始化。truststore中存的是server的公钥，不需要keypass也可以访问;
+     *  5）创建SSLContext并用3）和4）中创建的KeyManagerFactory和TrustManagerFactory对象来初始化;
+     *  6）创建SSLSocketFactory，在指定的网络地址和端口上创建SSLSocket;
+     *  7）在这个SSLSocket对象的输入输出流上进行读写;
+     *
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         String url = "https://127.0.0.1:8134/spring_mvc/m/tbb";
 

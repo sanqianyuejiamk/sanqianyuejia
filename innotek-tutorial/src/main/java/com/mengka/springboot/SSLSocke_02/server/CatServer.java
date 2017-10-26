@@ -55,6 +55,19 @@ public class CatServer implements Runnable, HandshakeCompletedListener {
         _s = s;
     }
 
+    /**
+     * server处理流程：
+     * 1）加载server的keystore文件，需要指定keystore的密码(storepass)；
+     * 2）加载server的truststore文件，需要指定truststore的密码(storepass)；
+     * 3）创建KeyManagerFactory对象并用1）中加载的keystore和server密钥对的密码(keypass)来初始化；
+     * 4）创建TrustManagerFactory对象并用2）中加载的truststore来初始化。truststore中存的是client的公钥，不需要keypass也可以访问；
+     * 5）创建SSLContext并用3）和4）中创建的KeyManagerFactory和TrustManagerFactory对象来初始化；
+     * 6）创建SSLServerSocketFactory，在指定的端口上创建SSLServerSocket并设定需要客户端证书：setNeedClientAuth(true)；
+     * 7）在SSLServerSocket对象上调用accept()方法等待客户端的连接；
+     *
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         KeyStore serverKeyStore = KeyStore.getInstance("JKS");
         serverKeyStore.load(new FileInputStream(Constants.serverKeyStoreFile), Constants.serverKeyStorePwd.toCharArray());
