@@ -1,0 +1,32 @@
+@startuml
+
+participant 设备 as d1
+participant IOT平台 as k1
+participant iotapp
+actor 管理员 as u1
+
+u1 -> iotapp: 设置订阅类型
+activate iotapp
+iotapp -> k1: 订阅设备变更消息
+activate k1
+k1 -> k1: 保存回调地址
+k1 --> iotapp: 200 OK响应
+deactivate iotapp
+
+d1 -> k1: 数据上报
+activate d1
+k1 -> k1: 调用编解码库解\n码，组装解码后\n的消息
+k1 -> iotapp: 设备变更数据回调
+activate iotapp
+iotapp --> k1: 200 OK响应
+iotapp -> iotapp: 数据解析处理，\n转发cabbageforward
+
+
+k1 -> k1: 调用编解码库对\n应答消息编码
+deactivate iotapp
+k1 -> d1: 返回应答消息
+d1 -> k1: ACK响应
+deactivate k1
+deactivate d1
+
+@enduml

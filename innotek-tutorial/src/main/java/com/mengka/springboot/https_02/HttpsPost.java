@@ -47,7 +47,7 @@ public class HttpsPost {
      * @return SSLSocketFactory
      * @throws Exception
      */
-    public static SSLContext getSSLContext(String password,
+    public static SSLContext getSSLContext(String password, String trustPassword,
                                            String keyStorePath, String trustStorePath) throws Exception {
         // 实例化密钥库KeyManager选择证书证明自己的身份
         KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
@@ -60,7 +60,7 @@ public class HttpsPost {
         TrustManagerFactory trustManagerFactory = TrustManagerFactory
                 .getInstance(TrustManagerFactory.getDefaultAlgorithm());
         // 获得信任库
-        KeyStore trustStore = getKeyStore(password, trustStorePath);
+        KeyStore trustStore = getKeyStore(trustPassword, trustStorePath);
         // 初始化信任库
         trustManagerFactory.init(trustStore);
         // 实例化SSL上下文
@@ -80,14 +80,14 @@ public class HttpsPost {
      * @param trustStorePath 信任库路径
      * @throws Exception
      */
-    public static void initHttpsURLConnection(String password,
+    public static void initHttpsURLConnection(String password, String trustPassword,
                                               String keyStorePath, String trustStorePath) throws Exception {
         // 声明SSL上下文
         SSLContext sslContext = null;
         // 实例化主机名验证接口
         HostnameVerifier hnv = new MyHostnameVerifier();
         try {
-            sslContext = getSSLContext(password, keyStorePath, trustStorePath);
+            sslContext = getSSLContext(password, trustPassword, keyStorePath, trustStorePath);
         } catch (GeneralSecurityException e) {
             e.printStackTrace();
         }
