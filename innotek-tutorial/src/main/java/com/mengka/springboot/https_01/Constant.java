@@ -26,6 +26,13 @@ public class Constant {
     public static String TOKEN_EXPIRES="";
     public static String TOKEN_TYPE="bearer";
 
+    /***************  IOT平台1.0 北向接口   ***********************/
+    public static String GET_TOKEN="/iocm/app/sec/v1.1.0/login";
+
     /***************  IOT平台2.0 北向接口   ***********************/
     public static String REFRESH_TOKEN_V2="/iocm/app/sec/v1.1.0/refreshToken";
+    public static String SUBSCRIBE_V2="/iocm/app/sub/v1.2.0/subscribe";
+
+
+    public static String NOTIFY_TYPE="deviceDataChanged";
 }

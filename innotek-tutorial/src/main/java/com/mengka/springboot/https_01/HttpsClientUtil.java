@@ -16,7 +16,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.springframework.core.io.ClassPathResource;
-
 import javax.net.ssl.*;
 import java.io.*;
 import java.net.URL;
@@ -27,7 +26,22 @@ import java.util.*;
 import java.util.Map.Entry;
 
 public class HttpsClientUtil {
+
     private final static String charset = "utf-8";
+
+    // 密钥库 "iotCert.pkcs12"
+    private final static String keyStorePath = "iotCert.pkcs12";
+    // 信任库 "tomcattrust_hw.keystore"
+//    private final static String trustStorePath = "https_01/tomcat.keystore";
+//    private final static String trustStorePath = "tomcattrust_hw.keystore";
+    private final static String trustStorePath = "truststore.ks";
+
+    private final static String keyPass = "innotek";
+
+//    private final static String trustPass = "111111";
+//    private final static String trustPass = "123456";
+    private final static String trustPass = "changeit";
+
     private static X509TrustManager xtm = new X509TrustManager() {
         @Override
         public X509Certificate[] getAcceptedIssuers() {
@@ -177,20 +191,20 @@ public class HttpsClientUtil {
      * @return
      */
     public static SSLContext getSSLContext() {
-        char[] keyPassphrase = "innotek".toCharArray();
-        char[] trustPassphrase = "changeit".toCharArray();
+        char[] keyPassphrase = keyPass.toCharArray();
+        char[] trustPassphrase = trustPass.toCharArray();
         SSLContext c = null;
         try {
             //通过PKCS12的证书格式得到密钥对象
             KeyStore ks = KeyStore.getInstance("PKCS12");//交换数字证书的标准
             //keycert.p12包含客户端的证书和key
-            ClassPathResource res = new ClassPathResource("iotCert.pkcs12");
+            ClassPathResource res = new ClassPathResource(keyStorePath);
             ks.load(new FileInputStream(res.getFile()), keyPassphrase);
             KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
             kmf.init(ks, keyPassphrase);
             KeyStore tks = KeyStore.getInstance("JKS");
             //用CA为服务器提供证书，若想连接服务器则将他添加到密钥库中
-            ClassPathResource res2 = new ClassPathResource("truststore.ks");
+            ClassPathResource res2 = new ClassPathResource(trustStorePath);
             tks.load(new FileInputStream(res2.getFile()), trustPassphrase);
             TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
             tmf.init(tks);
