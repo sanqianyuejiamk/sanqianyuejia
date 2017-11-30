@@ -2,7 +2,6 @@
 !.gitignore
 *.iml
 target
-*.jar
 *.war
 *~
 *.class
