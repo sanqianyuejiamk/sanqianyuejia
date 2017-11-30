@@ -1,5 +1,6 @@
 package com.mengka.springboot.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.mengka.springboot.activemq_01.Producer;
 import com.mengka.springboot.util.TimeUtil;
 import lombok.extern.log4j.Log4j2;
@@ -63,8 +64,13 @@ public class ActiveMQController {
 
         String message = "Just for test[" + TimeUtil.toDate(new Date(), TimeUtil.FORMAT_YYYY_MM_DD_HH_MM_SS);
 
+        /**
+         *  相当于我发的是hexstring，其中前面15个字符是IMEI
+         */
         String nocMessage = "3001000068000000003900000410aa0021110a13111602100100d8390000041051a0007a1919006400c8012c006407000077";
-        producer.sendNocByteTopic(nocMessage);
+        String imei = "863703030135477";
+
+        producer.sendNocByteTopic(imei+"0"+nocMessage);
         return "product_rate";
     }
 }

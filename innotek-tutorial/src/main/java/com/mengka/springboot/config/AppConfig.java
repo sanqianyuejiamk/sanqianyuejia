@@ -45,7 +45,7 @@ public class AppConfig {
 
     @Bean
     public Topic baicaiTopic() {
-        return new ActiveMQTopic("noc_msg2");
+        return new ActiveMQTopic("nb_msg_dn");
     }
 
     protected ActiveMQPrefetchPolicy prefetchPolicy(){
@@ -65,8 +65,8 @@ public class AppConfig {
         redeliveryPolicy.setUseExponentialBackOff(true);
         redeliveryPolicy.setBackOffMultiplier(5);
         //此链接信息可放入配置文件中
-//        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("cabbage", "cabbage@innotek", "tcp://192.168.10.219:61616");
-        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
+        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("cabbage", "cabbage@innotek", "tcp://192.168.10.219:61616");
+//        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
         connectionFactory.setClientID(CONNECT_CLIENT_ID);
         connectionFactory.setPrefetchPolicy(prefetchPolicy());
         connectionFactory.setRedeliveryPolicy(redeliveryPolicy);
@@ -85,8 +85,8 @@ public class AppConfig {
     @Bean
     public ActiveMQConnectionFactory connectionFactory2() {
         //此链接信息可放入配置文件中
-//        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("cabbage", "cabbage@innotek", "tcp://192.168.10.219:61616");
-        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
+        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("cabbage", "cabbage@innotek", "tcp://192.168.10.219:61616");
+//        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
         connectionFactory.setClientID("cabbage-mk-pro3");
         return connectionFactory;
     }
@@ -94,8 +94,8 @@ public class AppConfig {
     @Bean
     public ActiveMQConnectionFactory connectionFactory4() {
         //此链接信息可放入配置文件中
-//        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("cabbage", "cabbage@innotek", "tcp://192.168.10.219:61616");
-        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
+        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("cabbage", "cabbage@innotek", "tcp://192.168.10.219:61616");
+//        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
         connectionFactory.setClientID("cabbage-mk-pro4");
         return connectionFactory;
     }
@@ -103,8 +103,8 @@ public class AppConfig {
     @Bean
     public ActiveMQConnectionFactory connectionFactory5() {
         //此链接信息可放入配置文件中
-//        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("cabbage", "cabbage@innotek", "tcp://192.168.10.219:61616");
-        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
+        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("cabbage", "cabbage@innotek", "tcp://192.168.10.219:61616");
+//        ActiveMQConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://localhost:61616");
         connectionFactory.setClientID("cabbage-mk-pro5");
         return connectionFactory;
     }

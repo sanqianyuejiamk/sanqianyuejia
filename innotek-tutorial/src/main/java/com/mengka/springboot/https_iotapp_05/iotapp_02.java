@@ -42,6 +42,16 @@ public class iotapp_02 {
     public static final String clientTrustKeyStorePwd = "654321";
 
 
+    /**
+     *  postman配置:
+     *  127.0.0.1:8073
+     *  /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/bin/back_keystore/mykey.key
+     *  /Library/Java/JavaVirtualMachines/jdk1.8.0_111.jdk/Contents/Home/bin/back_keystore/mykey.crt
+     *  123456
+     *
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         String url = "https://127.0.0.1:8073/cabbage-iotapp/api/v1/devices?pageNo=1&pageSize=10";
 

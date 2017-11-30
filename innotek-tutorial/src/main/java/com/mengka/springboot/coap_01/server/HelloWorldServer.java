@@ -21,6 +21,25 @@ import java.util.Date;
  * https://iot.eclipse.org/getting-started#
  * https://projects.eclipse.org/projects/technology.californium
  *
+ * 》》CoAP是受限制的应用协议(Constrained Application Protocol)：
+ * 1.CoAP是一种物联网应用层协议，它运行于UDP协议之上；
+ * 2.和HTTP协议采用文本首部不同，CoAP协议采用完全的二进制首部，这使得CoAP协议的首部更短，传输效率更高；
+ * 3.CoAP协议为受限制设备而生，一个内存仅有20KB的单片机也可以实现CoAP服务器或客户端；
+ * 4.CoAP事务处理机制；
+ *
+ * 》》支持受限制的物联网场景；
+ *
+ *
+ * 》》CoAP块传输：
+ *  CoAP协议的特点是传输的内容小巧精简，但是在某些情况下不得不传输较大的数据。
+ *  在这种情况下可以使用CoAP协议中的某个选项设定分块传输的大小，那么无论是服务器或客户端可完成分片和组装这两个动作。
+ *
+ * 》》CoAP协议及开源实现：
+ * http://blog.csdn.net/tulun/article/details/8869241
+ *
+ * 》》调试：
+ * 使用Copper插件和Wireshark调试CoAP；
+ *
  * @author huangyy
  * @date 2017/11/06.
  */
