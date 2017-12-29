@@ -28,7 +28,7 @@
     // 中国城市分布数据
     // https://data.jianshukeji.com/geochina/cities.json
     // 这里用 JSONP 跨域访问
-    $.getJSON('https://data.jianshukeji.com/jsonp?filename=geochina/cities.json&callback=?', function (data) {
+    $.getJSON('http://127.0.0.1:8087/map/data.do?callback=?', function (data) {
         for (var name in data) {
             var d = data[name];
             if (d.level.level !== lastLevel) {
@@ -74,12 +74,12 @@
             },
             tooltip: {
                 useHTML: true,
-                headerFormat: '<small>{point.key}</small><table>',
+                headerFormat: '<div style="font-size: 10px;width: 300px;display:block;word-break: break-all;word-wrap: break-word;"><small>{point.key}</small><table>',
                 pointFormat: '<tr><td>城市级别</td><td>{series.name}</td></tr>' +
-                '<tr><td>所属省份</td><td>{point.properties.province}</td></tr>' +
-                '<tr><td>经纬度</td><td>({point.properties.lon:.2f}, {point.properties.lat:.2f})</td></tr>' +
-                '<tr><td>城市编号</td><td>{point.properties.cityNo}</td></tr>',
-                footerFormat: '</table>',
+                            '<tr><td>所属省份</td><td>{point.properties.province}</td></tr>' +
+                            '<tr><td>经纬度</td><td>({point.properties.lon:.2f}, {point.properties.lat:.2f})</td></tr>' +
+                            '<tr><td>城市编号</td><td>{point.properties.cityNo}</td></tr>',
+                footerFormat: '</table></div>',
             },
             plotOptions: {
                 series: {
