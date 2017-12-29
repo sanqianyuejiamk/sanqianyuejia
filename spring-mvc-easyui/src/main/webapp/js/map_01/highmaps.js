@@ -1196,8 +1196,7 @@
                                 var c = {}, x = l.createElementNS(w.SVG_NS, "tspan"), u, G;
                                 B.test(k) && (u = k.match(B)[1], d(x, "class", u));
                                 m.test(k) && (G = k.match(m)[1].replace(/(;| |^)color([ :])/, "$1fill$2"), d(x, "style", G));
-                                L.test(k) && !g && (d(x, "onclick", 'location.href\x3d"' + k.match(L)[1] +
-                                    '"'), d(x, "class", "highcharts-anchor"), r(x, {cursor: "pointer"}));
+
                                 k = t(k.replace(/<[a-zA-Z\/](.|\n)*?>/g, "") || " ");
                                 if (" " !== k) {
                                     x.appendChild(l.createTextNode(k));
@@ -3716,18 +3715,7 @@
                 this.setResponsive && this.setResponsive();
                 this.hasRendered = !0
             }, addCredits: function (a) {
-                var b = this;
-                a = u(!0, this.options.credits, a);
-                a.enabled && !this.credits && (this.credits = this.renderer.text(a.text + (this.mapCredits || ""), 0, 0).addClass("highcharts-credits").on("click",
-                    function () {
-                        a.href && (K.location.href = a.href)
-                    }).attr({
-                    align: a.position.align,
-                    zIndex: 8
-                }).css(a.style).add().align(a.position), this.credits.update = function (a) {
-                    b.credits = b.credits.destroy();
-                    b.addCredits(a)
-                })
+                console.log("addCredits..");
             }, destroy: function () {
                 var c = this, e = c.axes, g = c.series, f = c.container, k, d = f && f.parentNode;
                 b(c, "destroy");
@@ -6154,12 +6142,6 @@
                 {geojson: a}));
             return q
         };
-        r(A.prototype, "addCredits", function (a, d) {
-            d = v(!0, this.options.credits, d);
-            this.mapCredits && (d.href = null);
-            a.call(this, d);
-            this.credits && this.mapCreditsFull && this.credits.attr({title: this.mapCreditsFull})
-        })
     })(J);
     (function (a) {
         function z(a, d, h, c, g, b, e, m) {
