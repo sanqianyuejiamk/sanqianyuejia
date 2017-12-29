@@ -97,7 +97,7 @@ public class MapManager {
 
     public MapCityLevelDto getCityLevel(){
         MapCityLevelDto levelDto = new MapCityLevelDto();
-        levelDto.setRange(49);
+        levelDto.setRange(9);
         levelDto.setLevel(1);
         levelDto.setName("超过1000的城市");
         return levelDto;

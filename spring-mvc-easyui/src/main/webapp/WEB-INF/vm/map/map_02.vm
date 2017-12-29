@@ -26,7 +26,10 @@
             }],
             lastLevel = null;
     // 这里用 JSONP 跨域访问
-    $.getJSON('http://127.0.0.1:8087/map/data.do?callback=?', function (data) {
+    $.getJSON('http://127.0.0.1:8087/map/data.do?callback=?', function (rs) {
+        var total = rs.total;
+        var cityCount = rs.cityCount;
+        var data = rs.data;
         for (var name in data) {
             var d = data[name];
             if (d.level.level !== lastLevel) {
@@ -56,7 +59,7 @@
                 text: '城市泊位分布'
             },
             subtitle: {
-                text: '数据来源：道路停车数据系统'
+                text: '总数量: '+total+'\t城市数量: '+cityCount
             },
             mapNavigation: {
                 enabled: true,

@@ -3,6 +3,7 @@ package com.mengka.controller;
 import com.alibaba.fastjson.JSON;
 import com.mengka.manager.MapManager;
 import com.mengka.model.map.MapCityDO;
+import com.mengka.model.map.MapDataDO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -48,7 +49,11 @@ public class MapController {
     public String data(ModelMap map, @RequestParam(required = false) String callback) {
 
         Map<String,MapCityDO> data = mapManager.initData();
-        String result = JSON.toJSONString(data);
+        MapDataDO mapDataDO = new MapDataDO();
+        mapDataDO.setData(data);
+        mapDataDO.setTotal(101);
+        mapDataDO.setCityCount(10);
+        String result = JSON.toJSONString(mapDataDO);
 
         map.put("callback", callback);
         map.put("result", result);
