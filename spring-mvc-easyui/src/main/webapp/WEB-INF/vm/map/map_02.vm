@@ -25,8 +25,6 @@
                 showInLegend: false
             }],
             lastLevel = null;
-    // 中国城市分布数据
-    // https://data.jianshukeji.com/geochina/cities.json
     // 这里用 JSONP 跨域访问
     $.getJSON('http://127.0.0.1:8087/map/data.do?callback=?', function (data) {
         for (var name in data) {
@@ -55,10 +53,10 @@
                 type: 'mappoint'
             },
             title: {
-                text: '中国城市分布'
+                text: '城市泊位分布'
             },
             subtitle: {
-                text: '城市排名来源：人民日报'
+                text: '数据来源：道路停车数据系统'
             },
             mapNavigation: {
                 enabled: true,
@@ -74,12 +72,11 @@
             },
             tooltip: {
                 useHTML: true,
-                headerFormat: '<div style="font-size: 10px;width: 300px;display:block;word-break: break-all;word-wrap: break-word;"><small>{point.key}</small><table>',
-                pointFormat: '<tr><td>城市级别</td><td>{series.name}</td></tr>' +
-                            '<tr><td>所属省份</td><td>{point.properties.province}</td></tr>' +
-                            '<tr><td>经纬度</td><td>({point.properties.lon:.2f}, {point.properties.lat:.2f})</td></tr>' +
-                            '<tr><td>城市编号</td><td>{point.properties.cityNo}</td></tr>',
-                footerFormat: '</table></div>',
+                headerFormat: '<div style="width: 150px;display:block;word-break: break-all;word-wrap: break-word;"><small>{point.key}</small><table>',
+                pointFormat: '<tr><td>总数量</td><td>{point.properties.count}</td></tr>' +
+                            '<tr><td>NB数量</td><td>{point.properties.nbCount}</td></tr>' +
+                            '<tr><td>普通数量</td><td>{point.properties.otherCount}</td></tr>',
+                footerFormat: '</table></span></div>',
             },
             plotOptions: {
                 series: {

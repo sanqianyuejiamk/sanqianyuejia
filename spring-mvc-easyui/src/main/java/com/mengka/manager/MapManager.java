@@ -27,6 +27,9 @@ public class MapManager {
         mapCityDO1.setY(6381);
         mapCityDO1.setCityNo(1);
         mapCityDO1.setLevel(getCityLevel());
+        mapCityDO1.setCount(5000);
+        mapCityDO1.setNbCount(2000);
+        mapCityDO1.setOtherCount(3000);
         map.put("北京",mapCityDO1);
 
         //上海市
@@ -39,6 +42,9 @@ public class MapManager {
         mapCityDO2.setY(4409);
         mapCityDO2.setCityNo(2);
         mapCityDO2.setLevel(getCityLevel());
+        mapCityDO2.setCount(5000);
+        mapCityDO2.setNbCount(1000);
+        mapCityDO2.setOtherCount(4000);
         map.put("上海",mapCityDO2);
 
         //广州市
@@ -51,6 +57,9 @@ public class MapManager {
         mapCityDO3.setY(2560);
         mapCityDO3.setCityNo(3);
         mapCityDO3.setLevel(getCityLevel2());
+        mapCityDO3.setCount(3000);
+        mapCityDO3.setNbCount(1000);
+        mapCityDO3.setOtherCount(2000);
         map.put("广州",mapCityDO3);
 
         //深圳市
@@ -63,16 +72,34 @@ public class MapManager {
         mapCityDO4.setY(6381);
         mapCityDO4.setCityNo(4);
         mapCityDO4.setLevel(getCityLevel2());
+        mapCityDO4.setCount(1000);
+        mapCityDO4.setNbCount(500);
+        mapCityDO4.setOtherCount(500);
         map.put("深圳",mapCityDO4);
+
+        //绍兴市
+        MapCityDO mapCityDO5 = new MapCityDO();
+        mapCityDO5.setName("绍兴市");
+        mapCityDO5.setProvince("浙江省越城区曲屯路286号");
+//        mapCityDO5.setLat("30.0327950816");
+//        mapCityDO5.setLon("120.5754158967");
+        mapCityDO5.setX(7616);
+        mapCityDO5.setY(4131);
+        mapCityDO5.setCityNo(46);
+        mapCityDO5.setLevel(getCityLevel3());
+        mapCityDO5.setCount(300);
+        mapCityDO5.setNbCount(100);
+        mapCityDO5.setOtherCount(200);
+        map.put("绍兴",mapCityDO5);
 
         return map;
     }
 
     public MapCityLevelDto getCityLevel(){
         MapCityLevelDto levelDto = new MapCityLevelDto();
-        levelDto.setRange(4);
+        levelDto.setRange(49);
         levelDto.setLevel(1);
-        levelDto.setName("一线城市");
+        levelDto.setName("超过1000的城市");
         return levelDto;
     }
 
@@ -80,7 +107,15 @@ public class MapManager {
         MapCityLevelDto levelDto = new MapCityLevelDto();
         levelDto.setRange(19);
         levelDto.setLevel(2);
-        levelDto.setName("新一线城市");
+        levelDto.setName("超过500的城市");
+        return levelDto;
+    }
+
+    public MapCityLevelDto getCityLevel3(){
+        MapCityLevelDto levelDto = new MapCityLevelDto();
+        levelDto.setRange(39);
+        levelDto.setLevel(3);
+        levelDto.setName("低于500的城市");
         return levelDto;
     }
 

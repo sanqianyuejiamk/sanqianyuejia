@@ -22,6 +22,12 @@ public class MapCityDO {
 
     private Integer cityNo;
 
+    public Integer count;//泊位总数量
+
+    public Integer nbCount;//NB-IOT泊位数量
+
+    public Integer otherCount;//普通泊位数量
+
     public String getName() {
         return name;
     }
@@ -84,5 +90,29 @@ public class MapCityDO {
 
     public void setCityNo(Integer cityNo) {
         this.cityNo = cityNo;
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
+    }
+
+    public Integer getNbCount() {
+        return nbCount;
+    }
+
+    public void setNbCount(Integer nbCount) {
+        this.nbCount = nbCount;
+    }
+
+    public Integer getOtherCount() {
+        return otherCount;
+    }
+
+    public void setOtherCount(Integer otherCount) {
+        this.otherCount = otherCount;
     }
 }
