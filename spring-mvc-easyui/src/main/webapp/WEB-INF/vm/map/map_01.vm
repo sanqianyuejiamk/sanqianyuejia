@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <title>城市泊位分布图</title>
+    #parse("resources_map.vm")
+</head>
+<body>
+    #parse("navbar.vm")
+
+    <div id="container" style="height: 450px;"></div>
+    <script type="text/javascript" src="/js/map_01/china.js"></script>
+
+    <script type="text/javascript">
+        var series = [{
+                    // 地图数据列
+                    type: 'map',
+                    mapData: Highcharts.maps["cn/china"],
+                    joinBy: 'hc-key',
+                    name: '随机数据',
+                    states: {
+                        hover: {
+                            color: '#a4edba'
+                        }
+                    },
+                    showInLegend: false
+                }],
+                lastLevel = null;
+        // 中国城市分布数据
+        // https://data.jianshukeji.com/geochina/cities.json
+        // 这里用 JSONP 跨域访问
+        $.getJSON('https://data.jianshukeji.com/jsonp?filename=geochina/cities.json&callback=?', function (data) {
+            for (var name in data) {
+                var d = data[name];
+                if (d.level.level !== lastLevel) {
+                    series.push({
+                        name: d.level.name,
+                        visible: series.length < 4,
+                        data: []
+                    });
+                    lastLevel = d.level.level;
+                }
+                series[series.length - 1].data.push({
+                    name: name,
+                    properties: d,
+                    x: d.x,
+                    y: -d.y
+                });
+            }
+            for (var i = 1; i < series.length; i++) {
+                series[i].name += '（' + series[i].data.length + ' 个）';
+            }
+            // return false;
+            var map = new Highcharts.Map('container', {
+                chart: {
+                    type: 'mappoint'
+                },
+                title: {
+                    text: '中国城市分布'
+                },
+                subtitle: {
+                    text: '城市排名来源：人民日报'
+                },
+                mapNavigation: {
+                    enabled: true,
+                    buttonOptions: {
+                        verticalAlign: 'bottom'
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'left',
+                    floating: true,
+                    x: 30
+                },
+                tooltip: {
+                    useHTML: true,
+                    headerFormat: '<small>{point.key}</small><table>',
+                    pointFormat: '<tr><td>城市级别</td><td>{series.name}</td></tr>' +
+                    '<tr><td>所属省份</td><td>{point.properties.province}</td></tr>' +
+                    '<tr><td>经纬度</td><td>({point.properties.lon:.2f}, {point.properties.lat:.2f})</td></tr>' +
+                    '<tr><td>城市编号</td><td>{point.properties.cityNo}</td></tr>',
+                    footerFormat: '</table>',
+                },
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            enabled: false
+                        },
+                        marker: {
+                            radius: 3
+                        }
+                    }
+                },
+                series: series
+            });
+        });
+    </script>
+
+##    #parse("foot.vm")
+</body>
+</html>
