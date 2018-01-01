@@ -8,9 +8,9 @@ import java.util.Map;
  */
 public class MapDataDO {
 
-    public Integer total;
+    public Integer total;//泊位总数量
 
-    public Integer cityCount;
+    public Integer cityCount;//城市数量
 
     public Map<String,MapCityDO> data;
 

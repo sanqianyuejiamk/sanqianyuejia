@@ -29,6 +29,14 @@ public class MapController {
     @Autowired
     private MapManager mapManager;
 
+    /**
+     *  我国共有34个省级行政区域，包括23个省，5个自治区，4个直辖市，以及香港，澳门2个特别行政区。
+     *
+     * @param map
+     * @param request
+     * @param groupName
+     * @return
+     */
     @RequestMapping(value = "/map_01.do", method = {RequestMethod.GET, RequestMethod.POST})
     public String map_01(ModelMap map, HttpServletRequest request,
                         @RequestParam(required = false) String groupName) {
@@ -51,8 +59,8 @@ public class MapController {
         Map<String,MapCityDO> data = mapManager.initData();
         MapDataDO mapDataDO = new MapDataDO();
         mapDataDO.setData(data);
-        mapDataDO.setTotal(101);
-        mapDataDO.setCityCount(10);
+        mapDataDO.setTotal(15450);
+        mapDataDO.setCityCount(15);
         String result = JSON.toJSONString(mapDataDO);
 
         map.put("callback", callback);
