@@ -22,7 +22,9 @@
         subtitle: {
             text: 'Source: thesolarfoundation.com'
         },
-
+        xAxis: {
+            categories: ['2017-12-27', '2017-12-28', '2017-12-29', '2017-12-30', '2017-12-31', '2018-01-01', '2018-01-02', '2018-01-03']
+        },
         yAxis: {
             title: {
                 text: 'Number of Employees'
@@ -32,15 +34,6 @@
             layout: 'vertical',
             align: 'right',
             verticalAlign: 'middle'
-        },
-
-        plotOptions: {
-            series: {
-                label: {
-                    connectorAllowed: false
-                },
-                pointStart: 2010
-            }
         },
 
         series: [{

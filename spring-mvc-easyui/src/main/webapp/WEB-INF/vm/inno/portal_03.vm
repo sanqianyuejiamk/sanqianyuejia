@@ -32,11 +32,43 @@
         }
     </style>
 
+<!--
+title,窗口的标题文本。
+collapsible,boolean,定义是否显示折叠按钮。
+closable,boolean,定义是否显示关闭按钮。
+minimizable,boolean,定义是否显示最小化按钮。
+maximizable,boolean,定义是否显示最大化按钮。
+closed,boolean,定义是否关闭窗口。
+resizable,boolean,定义窗口是否可调整尺寸。
+
+文档：
+https://www.w3cschool.cn/jqueryeasyui/plugins-window-window.html
+https://www.w3cschool.cn/jqueryeasyui/plugins-layout-panel.html
+-->
     <script type="text/javascript">
         var panels = [
-            {id:'p1',title:'Tutorials',height:200,collapsible:true,href:'http://127.0.0.1:8087/inno/portal_p1.do'},
+            {
+                id:'p1',
+                title:'Tutorials',
+                height:200,
+                inline:true,
+                collapsible:true,
+                closable:true,
+                minimizable:true,
+                resizable:true,
+                maximizable:true,
+                href:'http://127.0.0.1:8087/inno/portal_p1.do'
+            },
             {id:'p2',title:'Clock',href:'http://127.0.0.1:8087/inno/portal_p1.do'},
-            {id:'p3',title:'PropertyGrid',height:200,collapsible:true,closable:true,href:'http://127.0.0.1:8087/inno/portal_p1.do'},
+            {
+                id:'p3',
+                title:'PropertyGrid',
+                height:200,
+                collapsible:true,
+                maximizable:true,
+                closable:true,
+                href:'http://127.0.0.1:8087/inno/portal_p1.do'
+            },
             {id:'p4',title:'DataGrid',height:200,closable:true,href:'http://127.0.0.1:8087/inno/portal_p1.do'},
             {id:'p5',title:'Searching',href:'http://127.0.0.1:8087/inno/portal_p1.do'},
             {id:'p6',title:'Graph',href:'http://127.0.0.1:8087/inno/portal_p1.do'},

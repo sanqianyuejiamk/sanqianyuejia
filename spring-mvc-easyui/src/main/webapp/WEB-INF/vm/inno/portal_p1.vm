@@ -1,7 +1,11 @@
 <!-- 列表 -->
 <div style="padding:5px;line-height:150%">
-    <div class="t-list"><a href="http://www.jeasyui.com/tutorial/datagrid/datagrid1.php" target="_blank">Convert a HTML table to DataGrid</a></div>
-    <div class="t-list"><a href="http://www.jeasyui.com/tutorial/layout/panel.php" target="_blank">Complex layout on Panel</a></div>
+    <div class="t-list">
+        <h1>总停车次数: 1000000</h1>
+    </div>
+    <div class="t-list">
+        <h1>当前空余泊位数: 1000000</h1>
+    </div>
     <div class="t-list"><a href="http://www.jeasyui.com/tutorial/layout/accordion.php" target="_blank">Create Accordion</a></div>
     <div class="t-list"><a href="http://www.jeasyui.com/tutorial/layout/tabs.php" target="_blank">Create Tabs</a></div>
     <div class="t-list"><a href="http://www.jeasyui.com/tutorial/layout/tabs2.php" target="_blank">Dynamically add tabs</a></div>
