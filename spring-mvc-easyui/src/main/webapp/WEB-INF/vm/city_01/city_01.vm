@@ -50,31 +50,8 @@
         var MulticitySelect1 = $('#multi-select-1').citySelect({
             dataJson: cityData,
             multiSelect: true,
-            multiMaximum: 6,
+            multiMaximum: 10,
             search: false,
-            onInit: function () {
-                console.log(this)
-            },
-            onForbid: function () {
-                console.log(this)
-            },
-            onTabsAfter: function (target) {
-                console.log(event)
-            },
-            onCallerAfter: function (target, values) {
-                console.log(JSON.stringify(values))
-            }
-        });
-
-        // 多选设置城市接口
-        MulticitySelect1.setCityVal('北京市, 天津市, 上海市, 广州市, 长沙市, 杭州市');
-
-        // 多选-自定义热门城市-搜索
-        var MulticitySelect2 = $('#multi-select-2').citySelect({
-            dataJson: cityData,
-            multiSelect: true,
-            search: true,
-            multiType: 1,
             hotCity: ['北京市', '上海市', '广州市', '深圳市', '南京市', '杭州市', '天津市', '重庆市', '成都市', '青岛市', '苏州市', '无锡市', '常州市', '温州市', '武汉市', '长沙市', '石家庄市', '南昌市', '三亚市', '合肥市'],
             onInit: function () {
                 console.log(this)
@@ -91,7 +68,7 @@
         });
 
         // 多选设置城市接口
-        MulticitySelect2.setCityVal('北京市, 天津市, 上海市, 广州市, 长沙市, 唐山市');
+        MulticitySelect1.setCityVal('北京市, 天津市, 上海市, 广州市, 长沙市, 杭州市');
 
     });
 </script>
