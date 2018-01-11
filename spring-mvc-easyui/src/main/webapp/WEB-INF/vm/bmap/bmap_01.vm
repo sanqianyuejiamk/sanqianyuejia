@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <title>aa</title>
+    #parse("resources_bmap.vm")
+
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=G0QfVTKgBgDbgLMXB0QbrheA"></script>
+    <!-- 点聚合JS -->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+    <!-- 点增加LabelJS -->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <!-- 测距JS -->
+    <script type="text/javascript" src="http://api.map.baidu.com/library/DistanceTool/1.2/src/DistanceTool_min.js"></script>
+</head>
+<body>
+
+##    #parse("navbar.vm")
+
+
+   <!--
+      region边框布局：east、west、north、south、center
+    -->
+<div id="mainLayout" class="easyui-layout" style="width:1200px;height:600px;">
+    <div region="west" split="true" title="Navigator" style="width:300px;">
+        <p style="padding:5px;margin:0;">Select language:</p>
+        <ul>
+            <li><a href="javascript:void(0)" onclick="showcontent('java')">Java</a></li>
+            <li><a href="javascript:void(0)" onclick="showcontent('cshape')">C#</a></li>
+            <li><a href="javascript:void(0)" onclick="showcontent('vb')">VB</a></li>
+            <li><a href="javascript:void(0)" onclick="showWindow('erlang')">Erlang</a></li>
+        </ul>
+    </div>
+    <div id="parkingMap" region="center" title="Language" style="padding:5px;">
+    </div>
+</div>
+
+<!-- 窗口 -->
+<div id="win" class="easyui-window" title="Login" closed="true" style="width:300px;height:180px;">
+    <form style="padding:10px 20px 10px 40px;">
+        <p>Name: <input type="text"></p>
+        <p>Pass: <input type="password"></p>
+        <div style="padding:5px;text-align:center;">
+            <a href="#" class="easyui-linkbutton" icon="icon-ok">Ok</a>
+            <a href="#" class="easyui-linkbutton" icon="icon-cancel" onclick="javascript:$('#win').window('close')">Cancel</a>
+        </div>
+    </form>
+</div>
+
+<script>
+    function showcontent(language){
+        $('#parkingMap').html('Introduction to ' + language + ' language');
+    }
+
+    function showWindow() {
+        $('#win').window('open');
+    }
+</script>
+
+
+<script type="text/javascript" src="/js/bmap/parkingMap.js"></script>
+
+</body>
+</html>
