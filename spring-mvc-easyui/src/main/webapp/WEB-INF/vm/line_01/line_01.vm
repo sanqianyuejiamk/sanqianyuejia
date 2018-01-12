@@ -35,7 +35,12 @@
             align: 'right',
             verticalAlign: 'middle'
         },
-
+        tooltip: {
+            pointFormatter: function() {
+                var point = this;
+                return '<span style="color:' + point.key + '">\u25CF</span> '+ point.series.name + ': <b>' + (point.y) + '</b><br/>';
+            }
+        },
         series: [{
             name: 'Installation',
             data: [43934, 52503, 57177, 69658, 97031, 119931, 137133, 154175]

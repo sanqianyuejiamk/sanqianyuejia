@@ -91,7 +91,7 @@
         },
         tooltip: {
             headerFormat: '<b>{point.x}</b><br/>',
-            pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+            pointFormat: '{series.name}: {point.y:.0f}<br/>Total: {point.stackTotal}'
         },
         plotOptions: {
             column: {
@@ -107,7 +107,7 @@
             data: [5, 3, 4, 7, 2]
         }, {
             name: '\u57ce\u5e02\u603b\u6cca\u4f4d',
-            data: [12, 12, 13, 12, 11]
+            data: [1200, 1200, 1300, 1200, 1100]
         }]
     });
 
