@@ -6,7 +6,7 @@
  * Copyright (c) 2004-2016 All Rights Reserved. 
  * 
  */
-package com.innotek.cabbage.entity.stat;
+package com.mengka.model;
 
 import java.io.Serializable;
 import java.util.Date;

@@ -6,13 +6,11 @@
  * Copyright (c) 2004-2016 All Rights Reserved. 
  * 
  */
-package com.innotek.cabbage.entity.base;
+package com.mengka.model;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
-
-import com.innotek.cabbage.entity.stat.ParkRecord;
 
 /** 
  * 停车点实体类
@@ -124,7 +122,7 @@ public class Park implements Serializable
 	}
 
 	/** 
-	 * @param regionId
+	 * @param regionCode
 	 */
 	public void setRegionCode(Integer regionCode) 
 	{
