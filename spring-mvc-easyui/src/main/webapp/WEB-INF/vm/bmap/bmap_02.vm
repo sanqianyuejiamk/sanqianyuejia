@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+    <title>aa</title>
+    #parse("resources_bmap.vm")
+
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=G0QfVTKgBgDbgLMXB0QbrheA"></script>
+    <!-- 点聚合JS -->
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/library/MarkerClusterer/1.2/src/MarkerClusterer_min.js"></script>
+    <!-- 点增加LabelJS -->
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/library/TextIconOverlay/1.2/src/TextIconOverlay_min.js"></script>
+    <!-- 测距JS -->
+    <script type="text/javascript"
+            src="http://api.map.baidu.com/library/DistanceTool/1.2/src/DistanceTool_min.js"></script>
+</head>
+
+<body onunload="releaseRAM()">
+<div id="mainLayout" class="easyui-layout"
+     style="width: 100%; height: 100%;" data-options="fit:true">
+    <input type="hidden" id="queryParkId" value=""/>
+    <div class="ui-search-panel"
+         data-options="region:'north',striped: true,collapsible:true,iconCls:'icon-search',border:false" title="查询条件"
+         style="width: 100%; height: 70px;"
+         id="toolBar">
+        <form id="searchForm">
+            <ul class="listUl">
+                <li class="listLi" style="width:150px;">
+                    <label class="ui-label">城市:</label>
+
+                </li>
+                <li class="listLi" style="width:160px;">
+                    <label class="ui-label">行政区:</label>
+
+                </li>
+                <li class="listLi" style="width:340px;">
+                    <label class="ui-label">停车点:</label>
+                    <input name="parkId" id="parkId" valueField="id" textField="name"
+                           class="easyui-combobox" panelHeight="150px" style="width:260px;"
+                           data-options="required:false,editable:false">
+                </li>
+                <li class="listLi" style="width:150px">
+                    <a href="#" id="btn-search" class="easyui-linkbutton" iconCls="icon-search" onclick="searchPark()">查询</a>
+                </li>
+                <li style="float:right;">
+                    <div id="mapOperMenu" class="easyui-menubutton"
+                         data-options="menu:'#menuTool',iconCls:'iconImg ext-icon-wand'">地图工具
+                    </div>
+                    <div id="menuTool">
+                        <div data-options="iconCls:'iconImg ext-icon-stop'"
+                             onclick="calcDis()">测距
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </form>
+    </div>
+
+    <div data-options="region:'west',title:'停车点',collapsed:true"
+         style="width: 270px;" id="parkingList"></div>
+
+    <div data-options="region:'east',title:'停车点详情'"
+         style="width: 280px;overflow-y:scroll !important" id="parkingDetail"></div>
+
+    <div data-options="region:'center'" style="width: 700px;"
+         id="parkingMap"></div>
+</div>
+
+<script type="text/javascript" src="/js/bmap/parkingMap.js"></script>
+
+</body>
+</html>
