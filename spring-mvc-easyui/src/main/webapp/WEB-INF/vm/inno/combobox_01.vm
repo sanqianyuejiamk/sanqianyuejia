@@ -35,23 +35,14 @@
         <p>Name: <input type="text"></p>
         <p>Pass: <input type="password"></p>
         <p>城市:
-        <div class="panel combo-p" style="height: 100px">
-            <div class="combo-panel panel-body panel-body-noheader" id="content-1" title="">
-                <div id="_easyui_combobox_i5_0" class="combobox-item">请选择</div>
-                <div id="_easyui_combobox_i5_1" class="combobox-item">天津市</div>
-                <div id="_easyui_combobox_i5_2" class="combobox-item">杭州市</div>
-                <div id="_easyui_combobox_i5_3" class="combobox-item combobox-item-selected">宁波市</div>
-                <div id="_easyui_combobox_i5_4" class="combobox-item">湖州市</div>
-                <div id="_easyui_combobox_i5_5" class="combobox-item">绍兴市</div>
-                <div id="_easyui_combobox_i5_6" class="combobox-item">舟山市</div>
-                <div id="_easyui_combobox_i5_7" class="combobox-item">台州市</div>
-                <div id="_easyui_combobox_i5_8" class="combobox-item">丽水市</div>
-                <div id="_easyui_combobox_i5_9" class="combobox-item">南平市</div>
-                <div id="_easyui_combobox_i5_10" class="combobox-item">鹰潭市</div>
-                <div id="_easyui_combobox_i5_11" class="combobox-item">成都市</div>
-                <div id="_easyui_combobox_i5_12" class="combobox-item">绵阳市</div>
-            </div>
-        </div>
+##            <input id="city-cc" name="dept" value="aa">
+            <select id="cc" class="easyui-combobox" name="dept" style="width:200px;">
+                <option value="aa">aitem1</option>
+                <option>bitem2</option>
+                <option>bitem3</option>
+                <option>ditem4</option>
+                <option>eitem5</option>
+            </select>
         </p>
         <div style="padding:5px;text-align:center;">
             <a href="#" class="easyui-linkbutton" icon="icon-ok">Ok</a>
@@ -74,15 +65,21 @@ http://manos.malihu.gr/repository/custom-scrollbar/demo/examples/complete_exampl
         $('#win').window('open');
     }
 
-    (function($){
-        $(window).on("load",function(){
+//    (function($){
+//        $(window).on("load",function(){
+//
+//            $("#content-1").mCustomScrollbar({
+//                theme:"dark"
+//            });
+//
+//        });
+//    })(jQuery);
 
-            $("#content-1").mCustomScrollbar({
-                theme:"dark"
-            });
-
-        });
-    })(jQuery);
+//    $('#city-cc').combobox({
+//        url:'combobox_data.do',
+//        valueField:'id',
+//        textField:'text'
+//    });
 </script>
 
     #parse("foot.vm")

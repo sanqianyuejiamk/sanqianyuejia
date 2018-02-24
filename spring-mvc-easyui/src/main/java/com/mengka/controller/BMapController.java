@@ -31,6 +31,12 @@ public class BMapController {
         return "bmap/bmap_01";
     }
 
+    @RequestMapping(value = "/map_02.do", method = {RequestMethod.GET, RequestMethod.POST})
+    public String map_02(ModelMap map, HttpServletRequest request,
+                         @RequestParam(required = false) String groupName) {
+        return "bmap/bmap_02";
+    }
+
     @RequestMapping(value = "/getParkingList.do", method = {RequestMethod.GET, RequestMethod.POST})
     public String getParkingList(ModelMap map, Integer cityCode, Integer regionCode, String parkId) {
         map.put("result", JSON.toJSONString(Collections.emptyList()));

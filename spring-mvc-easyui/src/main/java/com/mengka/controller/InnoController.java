@@ -1,5 +1,6 @@
 package com.mengka.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.mengka.manager.UserManager;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * EasyUI教程:
@@ -160,5 +165,31 @@ public class InnoController {
     public String portal_p1(ModelMap map, HttpServletRequest request,
                             @RequestParam(required = false) String groupName) {
         return "inno/portal_p1";
+    }
+
+    @RequestMapping(value = "/combobox_01.do", method = {RequestMethod.GET, RequestMethod.POST})
+    public String combobox_01(ModelMap map, HttpServletRequest request,
+                            @RequestParam(required = false) String groupName) {
+        return "inno/combobox_01";
+    }
+
+    @RequestMapping(value = "/combobox_data.do", method = {RequestMethod.GET, RequestMethod.POST})
+    public String combobox_data(ModelMap map, HttpServletRequest request,
+                              @RequestParam(required = false) String groupName) {
+        List<Map<String, Object>> items = new ArrayList<Map<String, Object>>();
+        Map<String, Object> jsonObj = new HashMap<String, Object>();
+        jsonObj.put("id", "3301");
+        jsonObj.put("name", "杭州市");
+        items.add(jsonObj);
+        Map<String, Object> jsonObj2 = new HashMap<String, Object>();
+        jsonObj2.put("id", "3302");
+        jsonObj2.put("name", "北京市");
+        items.add(jsonObj2);
+        Map<String, Object> jsonObj3 = new HashMap<String, Object>();
+        jsonObj3.put("id", "3303");
+        jsonObj3.put("name", "上海市");
+        items.add(jsonObj3);
+        map.put("result", JSON.toJSONString(items));
+        return "inno/combobox_01";
     }
 }
